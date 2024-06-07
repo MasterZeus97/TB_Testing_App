@@ -212,6 +212,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void stopListening() {
     _positionStream.cancel();
+    widget.storage.writeStopMeasure();
   }
 
   Future<void> startListening() async {

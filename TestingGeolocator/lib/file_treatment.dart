@@ -76,10 +76,23 @@ class CounterStorage {
     DateTime now = DateTime.now();
     String formattedDate = now.toString();
 
+    String platform = Platform.operatingSystem;
+
+
+
     // Write the file
-    return file.writeAsString('\n\nStarting new measure : $formattedDate\n\nlat,long,distSinceLast,month,day,hour,minute,second\n', mode: FileMode.append);
+    return file.writeAsString('\n\nStarting new measure on $platform: $formattedDate\n\nlat,long,distSinceLast,month,day,hour,minute,second\n', mode: FileMode.append);
   }
 
+  Future<File> writeStopMeasure() async {
+    final file = await localFile;
+
+    DateTime now = DateTime.now();
+    String formattedDate = now.toString();
+
+    // Write the file
+    return file.writeAsString('\n\nStopping measure: $formattedDate\n\n', mode: FileMode.append);
+  }
 
 
   Future<void> sendEmail() async {
@@ -107,9 +120,6 @@ class CounterStorage {
     //tmp.open(mode: FileMode.writeOnlyAppend);
 
     await FlutterEmailSender.send(email);
-
-    sleep(const Duration(seconds: 5));
-    deleteFile();
   }
 
   String _getFormattedDate() {
