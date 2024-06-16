@@ -44,10 +44,10 @@ Une fois cela fait, ouvrir le dossier ios du projet dans l'explorateur de fichie
 Pour ces deux app, l'objectif est de lancer la géolocalisation en appuyant sur le bouton play.
 
  ### testing_background_location
- Pour cette app, presser...
+ Pour cette app, presser Start Location Service
 
 Au boout d'un moment, une notification devrait apparaître sur androd, et un logo sur iOS. Ces deux indication montrent que la géolocalisation en arrière-plan est bien activée. Une fois que ces indicateurs sont apparus, réduire l'app (NE PAS LA FERMER EN LA SLIDANT, juste changer d'app active) et continuer la journée.
-En fin de journée ou lorsque l'indicateur a disparu, retourner sur l'app et presser le bouton stop. Une fois cela fait, envoyer le mail contenant le fichier de données collectées, soit en pressaant l'icone lettre, soit en pressant le bouton envoyer mail.
+En fin de journée ou lorsque l'indicateur a disparu, retourner sur l'app et presser le bouton stop. Une fois cela fait, envoyer le mail contenant le fichier de données collectées, soit en pressaant l'icone lettre, soit en pressant le bouton send email.
 
 Si des information supplémentaires vous semble utiles, ajoutez-les au corps du mail avant d'envoyer.
 
