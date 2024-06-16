@@ -190,7 +190,6 @@ class _MyHomePageState extends State<MyHomePage> {
     if (defaultTargetPlatform == TargetPlatform.android) {
       locationSettings = geo.AndroidSettings(
           accuracy: geo.LocationAccuracy.high,
-          distanceFilter: 5,
           forceLocationManager: true,
           foregroundNotificationConfig: const geo.ForegroundNotificationConfig(
             notificationText:
@@ -203,8 +202,7 @@ class _MyHomePageState extends State<MyHomePage> {
       locationSettings = geo.AppleSettings(
         accuracy: geo.LocationAccuracy.high,
         activityType: geo.ActivityType.fitness,
-        distanceFilter: 5,
-        pauseLocationUpdatesAutomatically: true,
+        pauseLocationUpdatesAutomatically: false,
         // Only set to true if our app will be started up in the background.
         showBackgroundLocationIndicator: true,
       );
