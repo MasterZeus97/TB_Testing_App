@@ -27,7 +27,7 @@ class LocationClient {
 
   void toggleBackgroundMode() async {
     if (await _location.isBackgroundModeEnabled()) {
-      log("toggleBackgroundMode: false");
+      log("toggleBackgroundM  ode: false");
       await _location.enableBackgroundMode(enable: false);
     } else {
       log("toggleBackgroundMode: true");
@@ -37,6 +37,7 @@ class LocationClient {
         await _location.changeNotificationOptions(
           title: 'Geolocation',
           subtitle: 'Geolocation detection',
+          iconName: 'drawable/logo',
         );
       }
     }
