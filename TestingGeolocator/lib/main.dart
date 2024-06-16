@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page', storage: CounterStorage())
+      home: MyHomePage(title: 'Testing app for Geolocator', storage: CounterStorage())
     );
   }
 }
@@ -43,18 +43,13 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   // Variable pour geolocator
-  String _pos = 'Unknown';
   int _distance = 0;
   int _distanceParcouru = 0;
-  int _distanceParcouru2 = 0;
   late geo.Position _oldPos;
   late geo.Position _currentPos;
   final geo.GeolocatorPlatform _geolocatorPlatform = geo.GeolocatorPlatform.instance;
   bool positionStreamStarted = false;
   late StreamSubscription<geo.Position> _positionStream;
-
-
-  String _isOutside = 'Unknown';
 
 
   Icon _icon = const Icon(Icons.play_arrow);
@@ -67,7 +62,6 @@ class _MyHomePageState extends State<MyHomePage> {
         //_incrementCounter();
       }else{
         setState(() {
-          //_pos = _kPermissionDeniedMessage;
           SystemChannels.platform.invokeMethod('SystemNavigator.pop');
         });
       }
@@ -117,7 +111,6 @@ class _MyHomePageState extends State<MyHomePage> {
             FloatingActionButton(
               onPressed: () {
                 setState(() {
-                  _pos = 'Unknown';
                   _distance = 0;
                   _distanceParcouru = 0;
                 });
@@ -140,31 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   //Testing
 
-  List<mp.LatLng> polygon = [
-    mp.LatLng(46.780484509024774, 6.659644658573927),
-    mp.LatLng(46.7793428968977, 6.66090446191839),
-    mp.LatLng(46.77855410376096, 6.6592637496846026),
-    mp.LatLng(46.77960590333222, 6.658000128980996),
-    mp.LatLng(46.780484509024774, 6.659644658573927)
-  ];
-
-
-  Future<void> _incrementCounter() async {
-    log("Measuring position");
-    final tmp = await _determinePosition();
-    final point = mp.LatLng(tmp.latitude, tmp.longitude);
-    var test = mp.PolygonUtil.containsLocation(point, polygon, false);
-    final tmp2 = tmp.toString();
-    log("Position: $tmp2");
-
-    setState(() {
-      _pos = tmp2;
-      _isOutside = test.toString();
-    });
-  }
-
   Future<geo.Position> _determinePosition() async {
-
     return await geo.Geolocator.getCurrentPosition();
   }
 
@@ -196,14 +165,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _toggleListening() {
     if (positionStreamStarted) {
-      positionStreamStarted = false;
       stopListening();
+      positionStreamStarted = false;
       setState(() {
         _icon = const Icon(Icons.play_arrow);
       });
     } else {
-      positionStreamStarted = true;
       startListening();
+      positionStreamStarted = true;
       setState(() {
         _icon = const Icon(Icons.stop);
       });
@@ -257,7 +226,6 @@ class _MyHomePageState extends State<MyHomePage> {
       log("Distance: $tmp");
       _oldPos = position;
       //geo.Position(latitude: position.latitude, longitude: position.longitude, timestamp: position.timestamp, accuracy: position.accuracy, altitude: position.altitude, heading: position.heading, speed: position.speed, speedAccuracy: position.speedAccuracy, floor: position.floor, isMocked: position.isMocked, altitudeAccuracy: position.altitudeAccuracy, headingAccuracy: position.headingAccuracy);
-      _distanceParcouru2 += tmp;
 
       widget.storage.writeLatLong(position.latitude, position.longitude, tmp);
 
