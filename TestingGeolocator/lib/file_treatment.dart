@@ -5,6 +5,9 @@ import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:path_provider/path_provider.dart';
 
 class CounterStorage {
+
+  final String _filename = 'geolocator_data.txt';
+
   Future<String> get localPath async {
     final directory = await getApplicationDocumentsDirectory();
 
@@ -13,7 +16,8 @@ class CounterStorage {
 
   Future<File> get localFile async {
     final path = await localPath;
-    return File('$path/counter.txt');
+
+    return File('$path/$_filename');
   }
 
   Future<int> readFile() async {
@@ -69,7 +73,7 @@ class CounterStorage {
     String platform = Platform.operatingSystem;
 
 
-
+    log("Writing start measure");
     // Write the file
     return file.writeAsString('\n\nStarting new measure on $platform: $formattedDate\n\nlat,long,distSinceLast,month,day,hour,minute,second\n', mode: FileMode.append);
   }
@@ -80,6 +84,7 @@ class CounterStorage {
     DateTime now = DateTime.now();
     String formattedDate = now.toString();
 
+    log("Writing stop measure");
     // Write the file
     return file.writeAsString('\n\nStopping measure: $formattedDate\n\n', mode: FileMode.append);
   }
@@ -89,20 +94,18 @@ class CounterStorage {
     log("sendEmail1");
 
     final path = await localPath;
-    String filepath = ('$path/counter.txt');
-    var tmp = File('$path/counter.txt');
+    String filepath = ('$path/$_filename');
+    var tmp = File('$path/$_filename');
     log("testing");
     log(filepath);
 
     List<String> attachments = [tmp.path];
 
-    var value = await readFile();
-    log("value: $value");
     Email email = Email(
-      body: value.toString(),
-      subject: 'Email subject',
-      recipients: ['thibault.seem@heig-vd.ch'],
-      cc: ['seemth1310@gmail.com'],
+      body: '',
+      subject: 'Location data from Geolocator package',
+      recipients: ['tblrqm.datacollection@gmail.com'],
+      cc: [],
       attachmentPaths: attachments,
       isHTML: false,
     );
