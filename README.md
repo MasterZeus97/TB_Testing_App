@@ -1,6 +1,8 @@
 # TB_Testing_App
 Voici les 3 apps que j'ai préparer afin de pouvoir tester le fonctionnement en arrière-plan des librairies que je propose d'utiliser pour l'application de la Roue Qui Marche.
 
+Pour les tests, il serait préférable de se concentrer sur [TestingGeolocator](https://github.com/MasterZeus97/TB_Testing_App/tree/main/TestingGeolocator) et [TestingLocation](https://github.com/MasterZeus97/TB_Testing_App/tree/main/TestingLocation/testing_location), car ce sont les librairies les plus populaires.
+
 ## Installation
 
 Tous les projets dans ce repo utilisent Flutter, il est donc nécessaire d'installer les instruments nécessaires.
