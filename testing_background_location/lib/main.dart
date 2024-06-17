@@ -116,10 +116,12 @@ class _MyAppState extends State<MyHomePage> {
                   },
                   child: Text('Start Location Service')),
               ElevatedButton(
-                  onPressed: () {
-                    BackgroundLocation.stopLocationService();
+                  onPressed: () async {
+                    if (await BackgroundLocation.isServiceRunning()){
+                      BackgroundLocation.stopLocationService();
 
-                    widget.storage.writeStopMeasure();
+                      widget.storage.writeStopMeasure();
+                    }
                   },
                   child: Text('Stop Location Service')),
               const SizedBox(height: 200,),
