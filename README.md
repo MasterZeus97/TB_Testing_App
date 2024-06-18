@@ -3,6 +3,10 @@ Voici les 3 apps que j'ai préparer afin de pouvoir tester le fonctionnement en 
 
 Pour les tests, il serait préférable de se concentrer sur [TestingGeolocator](https://github.com/MasterZeus97/TB_Testing_App/tree/main/TestingGeolocator) et [TestingLocation](https://github.com/MasterZeus97/TB_Testing_App/tree/main/TestingLocation/testing_location), car ce sont les librairies les plus populaires.
 
+## Remarque pour iOS
+L'envoi de mail, que ce soit android ou iOS, se fait via une autre app sur le téléphone. Je n'ai pas eu le temps ou la possibilité de tester l'envoi de mail avec un autre logiciel que l'app mail par défaut d'iOS. Si, lorsque vous pressez le bouton pour envoyer un email, rien ne se passe, cela vient peut-être de cela. Essayez d'installer7réinstaller cette application mail de base.
+Il est aussi très important qu'une adresse mail soit configurée sur cette application mail de base. Personnellement, j'ai fait mes essais avec une adresse gmail personnelle, et cela fonctionnait bien.
+
 ## Installation
 
 Tous les projets dans ce repo utilisent Flutter, il est donc nécessaire d'installer les instruments nécessaires.
@@ -52,8 +56,3 @@ Au boout d'un moment, une notification devrait apparaître sur androd, et un log
 En fin de journée ou lorsque l'indicateur a disparu, retourner sur l'app et presser le bouton stop. Une fois cela fait, envoyer le mail contenant le fichier de données collectées, soit en pressaant l'icone lettre, soit en pressant le bouton send email.
 
 Si des information supplémentaires vous semble utiles, ajoutez-les au corps du mail avant d'envoyer.
-
-
-## Remarque pour iOS
-L'envoi de mail, que ce soit android ou iOS, se fait via une autre app sur le téléphone. Je n'ai pas eu le temps ou la possibilité de tester l'envoi de mail avec un autre logiciel que l'app mail par défaut d'iOS. Si, lorsque vous pressez le bouton pour envoyer un email, rien ne se passe, cela vient peut-être de cela. Essayez d'installer7réinstaller cette application mail de base.
-Il est aussi très important qu'une adresse mail soit configurée sur cette application mail de base. Personnellement, j'ai fait mes essais avec une adresse gmail personnelle, et cela fonctionnait bien.
